@@ -56,6 +56,8 @@ export default function App() {
                 <Text dark bold>{recipes.name}</Text>
                 <Text dark small>{recipes.info}</Text>
               </RecipeInfor>
+
+              <AntDesign name="hearto" size={18} color="#000" />
             </Recipe>
           )
         })}</Recipes>
@@ -142,13 +144,18 @@ const Recipes = styled.View`
 `;
 
 const Recipe = styled.View`
-
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 16px;
 `;
 
 const RecipeImage = styled.Image`
-
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
 `;
 
 const RecipeInfor = styled.View`
-
+  flex: 1;
+  margin-left: 12px;
 `;
