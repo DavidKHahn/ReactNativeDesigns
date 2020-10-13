@@ -4,15 +4,33 @@ import { SafeAreaView, StatusBar } from 'react-native';
 import styled from 'styled-components';
 
 export default function App() {
+
+  const recipes = [
+    {
+      name: 'Pad Thai',
+      info: "45 min | 2 servings",
+      image: require("./assets/padthai.jpeg")
+    },
+    {
+      name: 'Seared Scallops with Romesco Sauce',
+      info: "20 min | 4 servings",
+      image: require("./assets/scallops.jpeg")
+    },
+    {
+      name: 'Grilled Chicken with Lemon',
+      info: "60 min | 2 servings",
+      image: require("./assets/chicken.jpeg")
+    }
+  ]
   return (
     <Container>
       <StatusBar barStyle="light-content" />
-      <RecipeBackground source={require("./assets/main.png")}>
+      <RecipeBackground source={require("./assets/main.jpeg")}>
         <SafeAreaView>
           <MenuBar>
             <Back>
-              <AntDesign name="arrowleft" size={24} color="yellow" />
-              <Text style={{ marginLeft: 10, color: 'black'}}>Ingredients</Text>
+              <AntDesign name="arrowleft" size={24} color="red" />
+              <Text style={{ marginLeft: 10, color: '#000' }}>Ingredients</Text>
             </Back>
             <AntDesign name="heart" size={24} color="red" />
           </MenuBar>
@@ -22,8 +40,26 @@ export default function App() {
             <Text bold>80 calories per 100g</Text>
             <Text>3g fat | 10g protein | 8g carbs</Text>
           </MainRecipe>
+          <Button>
+            <Text bold small>LEARN MORE</Text>
+          </Button>
         </SafeAreaView>
       </RecipeBackground>
+      <RecipesContainer>
+        <Text dark heavy large>Recipes</Text>
+        <Text dark small>18 recipes available</Text>
+        <Recipes>{recipes.map((recipes, index) => {
+          return (
+            <Recipe key={index}>
+              <RecipeImage source={recipes.image} />
+              <RecipeInfor>
+                <Text dark bold>{recipes.name}</Text>
+                <Text dark small>{recipes.info}</Text>
+              </RecipeInfor>
+            </Recipe>
+          )
+        })}</Recipes>
+      </RecipesContainer>
     </Container>
   )
 }
@@ -83,4 +119,36 @@ const Divider = styled.View`
   border-bottom-width: 2px;
   width: 150px;
   margin: 8px 0;
+`;
+
+const Button = styled.TouchableOpacity`
+  margin: 0 0 48px 32px;
+  background-color: rgba(255, 255, 255, 0.3);
+  align-self: flex-start;
+  padding: 6px 18px;
+  border-radius: 100px;
+`;
+
+const RecipesContainer = styled.View`
+  margin-top: -24px;
+  padding: 32px;
+  background-color: #fff;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+`;
+
+const Recipes = styled.View`
+  margin-top: 16px;
+`;
+
+const Recipe = styled.View`
+
+`;
+
+const RecipeImage = styled.Image`
+
+`;
+
+const RecipeInfor = styled.View`
+
 `;
