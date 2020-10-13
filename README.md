@@ -1,9 +1,10 @@
 # ReactNativeDesigns
 
 
-expo init ReactNativeDesigns
+`expo init ReactNativeDesigns`
 
-cd ReactNativeDesigns
-npm start # you can also use: expo start
+`cd ReactNativeDesigns`
 
-npm i styled-components 
+`npm start` # you can also use: `expo start`
+
+`npm i styled-components`
